@@ -1,0 +1,63 @@
+{% load course %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Learning Organizer{% endblock title %}</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link rel=icon href={% static 'images/MLOLogo.png' %} sizes=16x16 type=image/png>
+    <link rel=icon href={% static 'images/MLOLogo.png' %} sizes=32x32 type=image/png>
+</head> 
+<body>
+    
+    {% if not request.user.is_authenticated %}
+    {% include 'hero-section.html' %}
+    {% endif %}   
+    
+    
+<div class="content-afterhero" id="section2">
+    
+    <div id="header">
+        {% comment %} <img class="logoNav" src="{% static 'images/MLOLogo.png' %}" alt="This is my sites logo"> {% endcomment %}
+        <img style="float: left; padding-right: 5px; padding-top: 2px;" height="25px" class="logoNav" src="{% static 'images/MLOLogo.png' %}" alt="This is my sites logo">
+        <a href="/" class="logo">My Learning Organizer</a>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'student_course_list' %}" class="menu-bar-first">Enrolled Courses</a>
+        {% endif %}
+        <a href="{% url "about" %}" class="menu-bar">About</a> 
+        {% if request.user.is_authenticated %}<a href="{% url 'home' %}" class="menu-bar">Calendar</a> {% endif %} 
+        {% if request.user.is_authenticated %}<a href="{% url 'todo-index' %}" class="menu-bar">Todo</a> {% endif %}
+        {% if request.user.is_authenticated %}<a href="{% url 'notes.list' %}" class="menu-bar">Notes</a> {% endif %}
+        {% if request.user|has_group:"instructors" %}<a href="{% url 'manage_course_list' %}"  class="menu-bar manage">Manage Courses</a>{% endif %}
+    
+        
+        {% comment %} {% if request.user.is_authenticated %}<a class="menu-bar" href="#" onclick="window.open('{% url 'note-list' %}', 'newwindow', 'width=800, height=800'); return false;">Notes</a>{% endif %} {% endcomment %}
+        <ul class="menu" >
+            
+            
+            {% if request.user.is_authenticated %}
+                <li><div id="name">Hi, {% if request.user.first_name %}{{ request.user.first_name }}{% else %}{{request.user|title}}{% endif %}</div><a class="sign-in-out" href="{% url 'logout' %}">Sign Out</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Sign In</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div id="content" class="bodyheight">
+        {% block content %}
+        {% endblock content %}        
+    </div>
+</div>
+    {% block include_js %}
+    {% endblock include_js %}
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            {% block domready %}
+            {% endblock domready %}
+        })
+    </script>
+    
+</body>
+</html>

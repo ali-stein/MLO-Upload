@@ -1,0 +1,34 @@
+{% extends 'notesBase.html'%}
+{% load static %}
+
+{% block content %} 
+<div class="row">
+    <div class="col">
+        <div class="notes_list_heading text-center">
+            <h1 class="fs-2 fw-bold" >Notes:</h1>
+            <a href="{% url 'notes.new' %}" class="btn btn-outline-info btn-block mt-4">New Note </a>
+        </div>
+        <br>
+        <br>
+    </div>
+</div>
+<div class="row">
+    {% for note in notes %}
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header fw-bold">{{note.title}}</div>
+            <div class="card-body">
+                <p>{{note.description|truncatechars:50}}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'notes.detail' pk=note.id %}" class="btn btn-outline-info btn-block mt-4">View Note </a>
+                <a href="{% url 'notes.delete' pk=note.id %}" class="btn btn-outline-danger btn-block mt-4">Delete</a>
+            </div>
+           
+        </div>
+    </div>    
+    {% endfor %}
+       
+</div>
+  
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+      {{ location }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><strong>Location: </strong>{{ evelocation }}</h5>
+      <p class="card-text">
+        <br/>
+
+        <strong>Address: </strong>{{ event.adress }}<br/>
+        <br/>
+    
+        <strong>Zip Code: </strong>{{ event.zip_code }}<br/>
+        <br/>
+    
+       
+
+
+
+    </div>
+  </div>
+<center>
+    <h1>{{ location }}</h1>
+    <br/>
+    {{ location.adress }}<br/>
+    {{ location.zip_code }}<br/>
+
+</center>
+
+{% endblock %}

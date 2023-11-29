@@ -1,0 +1,25 @@
+{% load course %}
+{% load static %}
+<div id="header">
+     {% comment %} <img class="logoNav" src="{% static 'images/MLOLogo.png' %}" alt="This is my sites logo"> {% endcomment %}
+     <img style="float: left; padding-right: 5px; padding-top: 2px;" height="25px" class="logoNav" src="{% static 'images/MLOLogo.png' %}" alt="This is my sites logo">
+    <a href="/" class="logo">My Learning Organizer</a>
+    {% if request.user.is_authenticated %}<a href="{% url 'student_course_list' %}" class="menu-bar-first">Enrolled Courses</a> {% endif %}
+    <a href="{% url "about" %}" class="menu-bar">About</a>
+
+    {% if request.user.is_authenticated %}<a href="{% url 'home' %}" class="menu-bar">Calendar</a> {% endif %}
+    {% if request.user.is_authenticated %}<a href="{% url 'todo-index' %}" class="menu-bar">Todo</a> {% endif %}
+    {% if request.user.is_authenticated %}<a href="{% url 'notes.list' %}" class="menu-bar">Notes</a> {% endif %}
+    {% comment %} {% if request.user.is_authenticated %}<a class="menu-bar" href="#" onclick="window.open('{% url 'note-list' %}', 'newwindow', 'width=800, height=800'); return false;">Notes</a>{% endif %} {% endcomment %}
+    {% if request.user|has_group:"instructors" %}<a href="{% url 'manage_course_list' %}"  class="menu-bar manage">Manage Courses</a>{% endif %}
+    
+    
+    <ul class="menu">
+
+        {% if request.user.is_authenticated %}
+            <li><div id="name">Hi, {% if request.user.first_name %}{{ request.user.first_name }}{% else %}{{request.user|title}}{% endif %}</div><a class="sign-in-out" href="{% url 'logout' %}">Sign Out</a></li>
+        {% else %}
+            <li><a class="sign-in-out"  href="{% url 'login' %}">Sign In</a></li>
+        {% endif %}
+    </ul>
+</div>

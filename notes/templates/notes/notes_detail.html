@@ -1,0 +1,20 @@
+{% extends 'notesBase.html'%} <!--notesBase.html in courses templates folder-->
+{% load static %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Note Details</div>
+                <div class="card-body">
+                    <h1 class="fs-5">{{note.title}}</h1>
+                    <p>{{note.description}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'notes.list' %}" class="btn btn-outline-info btn-block mt-4">Back</a>
+                    <a href="{% url 'notes.update' pk=note.id %}" class="btn btn-outline-warning btn-block mt-4">Edit</a>
+                    <a href="{% url 'notes.delete' pk=note.id %}" class="btn btn-outline-danger btn-block mt-4">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

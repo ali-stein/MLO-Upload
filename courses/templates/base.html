@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Learning Organizer{% endblock title %}</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link rel=icon href={% static 'images/MLOLogo.png' %} sizes=16x16 type=image/png>
+    <link rel=icon href={% static 'images/MLOLogo.png' %} sizes=32x32 type=image/png>
+</head> 
+<body>
+    
+       
+    
+    {% include "navigation.html" %}
+    
+    <div id="content">
+        {% block content %}
+        {% endblock content %}       
+         
+    </div>
+    {% block include_js %}
+    {% endblock include_js %}
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            {% block domready %}
+            {% endblock domready %}
+        })
+    </script>
+    
+</body>
+
+</html>

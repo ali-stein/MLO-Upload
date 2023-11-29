@@ -1,0 +1,52 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+
+<center>
+<h1 style="font-family: american typewriter, serif; color: #000080 ">MLO Calendar</h1>
+    
+<span style="color: #000080; font-family: Brush Script MT ;">{{ time }}</span>
+
+<br/><br/>
+
+<style>
+    /* Define the CSS styles for the table */
+    table {
+        border-collapse: collapse;
+        border: 5px solid #e3f2fd; /* Set the border color to blue */
+        width: 100%; /* Make the table fill the container */
+    }
+  
+    /* Style for table cells */
+    td {
+        padding: 30px;
+        border: 1px solid #000080; /* Set the cell border color to blue */
+        text-align: center;
+        
+    }
+
+    th {
+        background-color: #e3f2fd; /* Set the background color of weekdays to blue */
+        color: #000080; /* Set the text color of weekdays to white */
+        padding: 10px 15px; /* Add padding for better readability */
+        text-align: center;
+        font-family: Baskerville; 
+        
+  }
+  </style>
+
+ <table border-radius="5" cellpadding="30" cellspacing="15" style="border-color: #e3f2fd;"
+ 
+ {{ cal|safe }}
+
+ 
+ </table>
+
+<br/><br/><br/><br/>
+
+
+<span style="color: #000080; font-style: italic;">Copyright (c) {{ current_year }}</span>
+    </center>
+
+{% endblock %}

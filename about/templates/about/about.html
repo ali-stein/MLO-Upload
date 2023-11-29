@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+About The MLO Team
+{% endblock title %}
+
+{% block content %}
+<h1 id="about-title">About The MLO Team</h1>
+{% comment %} <div class="div-center">
+<img src="{% static "images/GroupPhoto.png" %}" alt="Group Photo" width="85%">
+</div> {% endcomment %}
+
+
+<div class="grid-container">
+    <div><img src="{% static "images/ed.png" %}" width="50%" alt="Ed"></div>
+    <div><img src="{% static "images/Ali.png" %}" width="50%" alt="Ali"></div>
+    <div><img src="{% static "images/Abri.jpg" %}" width="50%" alt="Abri"></div>
+    <div><img src="{% static "images/Daniel.jpg" %}" width="50%" alt="Daniel"></div>
+    <div>Edward Fong</div>
+    <div>Alissa Steinman</div>
+    <div>Abriana Vidal</div>
+    <div>Daniel Diaz</div>
+    <div id="degree">Software Development</div>
+    <div id="degree">ICT & Spanish</div>
+    <div id="degree">Cyber Defense</div>
+    <div id="degree">Cyber Security</div>
+    <div id="about">My name is Ed Fong and I was born and raised in Hawaii on the Island of Oahu. I love programming as well. Languages that I use are C++, Java, C#, Kotlin, and Python.</div>
+    <div id="about">I am double majoring in Information and Communication Technology and Foreign Languages, concentrating in Spanish. I currently work as the Head Route Setter for the NMSU Rock Climbing Wall and as a tutor for the Engineering College. I love programming and working on computers! After graduation, I hope to find a job where I can explore and develop these interests.</div>
+    <div id="about">Hello, my name is Abriana Vidal and I am majoring in ICT with a focus in Cyber Defense, and will graduate in May 2024. I am currently interning with Northrop Grumman as an Electrical Engineering intern and after graduation, I will be working as an Electronics Engineer for Northrop Grumman in the Tactical Space Systems division.</div>
+    <div id="about">Hello. My name is Daniel.
+        I'm pursuing a degree in Cyber Security. My goal is to get a career in that field and move up within the company. Besides school, I like to go to the gym, play games, hike or write.</div>
+    
+    
+  </div>
+{% endblock content %}

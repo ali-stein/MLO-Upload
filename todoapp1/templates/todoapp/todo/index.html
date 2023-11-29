@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+{% extends 'todoapp/partials/base.html' %}
+{% load static %}
+{% block title %}MLO{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<head>
+</head>
+
+<body>
+    <div class="border pt-3">
+        <form method="POST">
+            {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-success btn-block" type="submit" value="Submit">
+          </form>
+        <hr>
+        {% for todo in todos %}
+        <div class="border p-3 mb-3">
+             <small>{{ todo.date}}</small>
+             <div class="row">
+                 <div class="col-md-8">
+                    {% if todo.complete == True %}
+                      <p>{{ todo.assignment }}</p>
+                      <p>Type: {{ todo.type }}</p>
+                      <p>Class: {{ todo.classes }}</p>
+                      <p>Due Date: {{ todo.duedate }}</br>
+                      <span class="btn btn-success btn-sm">Done
+                      </span></p>
+                    {% else %}
+                      <p>{{ todo.assignment }}</p>
+                      <p>Type: {{ todo.type }}</p>
+                      <p>Class: {{ todo.classes }}</p>
+                      <p>Due Date: {{ todo.duedate }}</p> 
+                    {% endif %}
+                 </div>
+                 <div class="col-md-4">
+                    <a class="btn btn-info btn-sm" href="{% url 'todo-update' todo.id %}">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'todo-delete' todo.id %}">Delete</a>
+                 </div>
+             </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+</body>
+</html>

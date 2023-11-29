@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>   
+<div class="border p-3">
+    <h4>Progress</h4>
+    <hr>
+    <div class="border p-3 mb-2">
+        <h3>Total</h3>
+        <h4 class="text-center">{{ count_todos }}</h4>
+    </div>
+    <div class="border p-3 mb-2">
+        <h3>Completed</h3>
+        <h4 class="text-center">{{ count_completed_todo }}</h4>
+    </div>   
+    <div class="border p-3 mb-2">
+        <h3>Uncompleted</h3>
+        <h4 class="text-center">{{ count_uncompleted_todo }}</h4>
+    </div>   
+
+    <div class="container-fluid">
+        <div class="progress" style="height: 32px;">
+          <div style="width:{{ percentageoftaskscompleted }}%" class="progress-bar" >{{  percentageoftaskscompleted }}</div>
+        </div>
+      </div>
+
+
+</div>
+</body>
+</html>

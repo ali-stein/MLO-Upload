@@ -1,0 +1,30 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-info bg-info">
+    <div class="container-fluid">
+
+    
+        <a class="navbar-brand text-white" href="/"><img style="float: left; padding-right: 5px; padding-top: 2px;" height="25px" class="logoNav" src="{% static 'images/MLOLogo.png' %}" alt="This is my sites logo"> MY LEARNING ORGANIZER</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'about' %}">About <span class="sr-only">(current)</span></a>
+                </li> 
+                <li class="nav-item">
+                    {% if request.user.is_authenticated %}<a class="nav-link text-white" href="{% url 'home' %}" class="menu-bar">&nbsp;&nbsp;&nbsp;Calendar</a> {% endif %}
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="{% url 'todo-index' %}">Todo List <span class="sr-only">(current)</span></a>
+                </li>                
+                <li class="nav-item">
+                    {% if request.user.is_authenticated %}<a class="nav-link text-white" href="{% url 'notes.list' %}" class="menu-bar">&nbsp;&nbsp;&nbsp;Notes</a> {% endif %}
+                </li>
+
+                
+            </ul>
+        </div>
+    </div>
+  </nav>

@@ -1,0 +1,26 @@
+{% load course %} <!-- load template tag -->
+
+<!-- Check if url extension is mp4 -->
+{% if item.file.url|mp4_check:"." %}
+<video width="320" height="240" controls>
+  <source src="{{ item.file.url }}" type="video/mp4">
+Your browser does not support the video tag.
+</video> 
+<p style="color:#279EFF;">*Right click and select save video as to download.</p>
+
+<!-- Check if url extension is mp3 -->
+{% elif item.file.url|mp3_check:"." %}
+<audio width="320" height="240" controls>
+  <source src="{{ item.file.url }}" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio> 
+<p><a href="{{ item.file.url }}" class="button">Download file</a></p>
+
+<!-- if not, then just show download button-->
+{% else %}
+<p><a href="{{ item.file.url }}" class="button">Download file</a></p>
+{% endif %}
+
+
+
+{% comment %} <p><a href="{{ item.file.url }}" class="button">Download file</a></p> {% endcomment %}
